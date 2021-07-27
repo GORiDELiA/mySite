@@ -62,6 +62,10 @@
     <h2 v-if="name === 'Bruce'">{{ name }}</h2>
   </template>
 
+  <h2>{{ 2 + 4 + 4 }}</h2>
+  <h2>Add method - {{ add(2,4,5) }}</h2>
+  <h2>Multiply method - {{ multiply(baseValue) }}</h2>
+  
 </template>
 
 <script>
@@ -126,9 +130,18 @@ export default {
         channel: "Codevolution",
         cource: "Vue 3",
       },
-
+      baseMultiply: 5,
+      baseValue: 2
     }
   },
+  methods: {
+    add(a, b, c) {
+      return a + b + c
+    },
+    multiply(num) {
+      return num * this.baseMultiply
+    }
+  }
 }
 </script>
 
