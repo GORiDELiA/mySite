@@ -58,14 +58,26 @@
     <hr />
   </template> -->
 
-  <template v-for="name in names" :key="name">
+  <!-- <template v-for="name in names" :key="name">
     <h2 v-if="name === 'Bruce'">{{ name }}</h2>
   </template>
 
   <h2>{{ 2 + 4 + 4 }}</h2>
   <h2>Add method - {{ add(2,4,5) }}</h2>
-  <h2>Multiply method - {{ multiply(baseValue) }}</h2>
+  <h2>Multiply method - {{ multiply(baseValue) }}</h2> -->
   
+  <h2>{{name}}</h2>
+  <div>
+    <button v-on:mouseover="changeName, increment(1, $event)">Change name</button>
+  </div>
+
+  <h2>{{count}}</h2>
+  <div>
+    <button @click="increment(1, $event)">Increment 1</button>
+    <button @click="increment(5)">Increment 5</button>
+    <button @click="decrement(1)">Decrement 1</button>
+    <button @click="decrement(5)">Decrement 5</button>
+  </div>
 </template>
 
 <script>
@@ -109,38 +121,52 @@ export default {
       // display: true,
       // showElement: false,
 
-      names: ["Bruce", "Clark", "Diana"],
-      fullNames: [
-        { first: "Bruce", last: "Wayne" },
-        { first: "Clark", last: "Kent" },
-        { first: "Princess", last: "Diana" },
-      ],
-      actors: [
-        {
-          name: "Christian Bale",
-          movies: ["Batman", "The Prestige"],
-        },
-        {
-          name: "Di Caprio",
-          movies: ["Titanic", "Inception"],
-        },
-      ],
-      myInfo: {
-        name: "Vishwas",
-        channel: "Codevolution",
-        cource: "Vue 3",
-      },
-      baseMultiply: 5,
-      baseValue: 2
+      // names: ["Bruce", "Clark", "Diana"],
+      // fullNames: [
+      //   { first: "Bruce", last: "Wayne" },
+      //   { first: "Clark", last: "Kent" },
+      //   { first: "Princess", last: "Diana" },
+      // ],
+      // actors: [
+      //   {
+      //     name: "Christian Bale",
+      //     movies: ["Batman", "The Prestige"],
+      //   },
+      //   {
+      //     name: "Di Caprio",
+      //     movies: ["Titanic", "Inception"],
+      //   },
+      // ],
+      // myInfo: {
+      //   name: "Vishwas",
+      //   channel: "Codevolution",
+      //   cource: "Vue 3",
+      // },
+      // baseMultiply: 5,
+      // baseValue: 2
+      name: "Vishwas",
+      count: 0,
     }
   },
   methods: {
-    add(a, b, c) {
-      return a + b + c
-    },
-    multiply(num) {
-      return num * this.baseMultiply
-    }
+    // add(a, b, c) {
+    //   return a + b + c
+    // },
+    // multiply(num) {
+    //   return num * this.baseMultiply
+    // }
+      increment(num, event) {
+        this.count += num
+        console.log("Event", event)
+      },
+      decrement(num, event) {
+        this.count -= num
+        console.log("Event", event)
+      },
+      changeName(event) {
+        this.name = "Batman"
+        console.log("Event", event)
+      },
   }
 }
 </script>
