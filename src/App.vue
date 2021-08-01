@@ -66,7 +66,7 @@
   <h2>Add method - {{ add(2,4,5) }}</h2>
   <h2>Multiply method - {{ multiply(baseValue) }}</h2> -->
   
-  <h2>{{name}}</h2>
+  <!-- <h2>{{name}}</h2>
   <div>
     <button v-on:mouseover="changeName, increment(1, $event)">Change name</button>
   </div>
@@ -77,7 +77,43 @@
     <button @click="increment(5)">Increment 5</button>
     <button @click="decrement(1)">Decrement 1</button>
     <button @click="decrement(5)">Decrement 5</button>
+  </div> -->
+  <div>
+    <pre>
+      {{ JSON.stringify(formValues, null ,2) }}
+    </pre>
   </div>
+  <form >
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="formValues.name">
+    </div>
+
+    <div>
+      <label for="profile">Profile Summary</label>
+      <textarea id="profile" v-model="formValues.profileSummary" /> 
+    </div>
+
+    <div>
+      <label for="country">Country</label>
+      <select id="country" v-model="formValues.country">
+        <option value="">Select a country</option>
+        <option value="india">India</option>
+        <option value="vietnam">Vietnam</option>
+        <option value="singapore">Singapore</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="job-location">Job Location</label>
+      <select id="job-location" multiple v-model="formValues.jobLocation">
+        <option value="india">India</option>
+        <option value="vietnam">Vietnam</option>
+        <option value="singapore">Singapore</option>
+      </select>
+    </div>
+
+  </form>
 </template>
 
 <script>
@@ -146,6 +182,12 @@ export default {
       // baseValue: 2
       name: "Vishwas",
       count: 0,
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '',
+        jobLocation: [],
+      },
     }
   },
   methods: {
@@ -155,18 +197,18 @@ export default {
     // multiply(num) {
     //   return num * this.baseMultiply
     // }
-      increment(num, event) {
-        this.count += num
-        console.log("Event", event)
-      },
-      decrement(num, event) {
-        this.count -= num
-        console.log("Event", event)
-      },
-      changeName(event) {
-        this.name = "Batman"
-        console.log("Event", event)
-      },
+    // increment(num, event) {
+    //   this.count += num
+    //   console.log("Event", event)
+    // },
+    // decrement(num, event) {
+    //   this.count -= num
+    //   console.log("Event", event)
+    // },
+    // changeName(event) {
+    //   this.name = "Batman"
+    //   console.log("Event", event)
+    // },
   }
 }
 </script>
@@ -176,7 +218,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
@@ -195,5 +237,30 @@ export default {
 
 .sold-out {
   color: red;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
+}
+input + label {
+  font-weight: bold;
+  display: inline-flex;
+  margin-right: 20px;
+}
+input[type='text'],
+textarea,
+select {
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 </style>
