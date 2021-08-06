@@ -20,7 +20,7 @@
     new: !isSoldout,
     'sold-out': isSoldout
   }">Object conditional movie</h2>
- 
+
   <h2 :style="{
     color: hilightColor,
     fontSize: headerSize + 'px',
@@ -83,7 +83,7 @@
       {{ JSON.stringify(formValues, null ,2) }}
     </pre>
   </div>
-  <form >
+  <form @submit="submitForm">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" v-model="formValues.name">
@@ -113,7 +113,65 @@
       </select>
     </div>
 
+    <div>
+      <input 
+        type="checkbox"
+        id="remoteWork" 
+        v-model="formValues.remoteWork" 
+        true-value="yes" 
+        false-value="no"
+      />
+      <label for="remoteWork">Open to remote work?</label>
+    </div>
+
+    <div>
+      <label for="skillSet">Skill set</label>
+      <input type="checkbox" id="html" value="html" v-model="formValues.skillSet"/>
+      <label for="html">html</label>
+      <input type="checkbox" id="css" value="css" v-model="formValues.skillSet"/>
+      <label for="css">css</label>
+      <input type="checkbox" id="javascript" value="javascript" v-model="formValues.skillSet"/>
+      <label for="javascript">javascript</label>
+    </div>
+
+    <div>
+      <label for=""> Years of Experience</label>
+      <input 
+        type="radio"
+        id="0-2"
+        value="0-2"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="">0-2</label>
+      <input 
+        type="radio"
+        id="3-4"
+        value="3-4"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="">3-4</label>
+      <input 
+        type="radio"
+        id="6-10"
+        value="6-10"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="">6-10</label>
+      <input 
+        type="radio"
+        id="10+"
+        value="10+"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="">10+</label>
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
   </form>
+
+
 </template>
 
 <script>
@@ -187,6 +245,9 @@ export default {
         profileSummary: '',
         country: '',
         jobLocation: [],
+        remoteWork: "no",
+        skillSet: [],
+        yearsOfExperience: "",
       },
     }
   },
@@ -209,6 +270,10 @@ export default {
     //   this.name = "Batman"
     //   console.log("Event", event)
     // },
+    submitForm(event) {
+      event.preventDefault()
+      console.log('Form values', this,this.formValues)
+    }
   }
 }
 </script>
