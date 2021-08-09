@@ -133,8 +133,8 @@
       <input type="checkbox" id="javascript" value="javascript" v-model="formValues.skillSet"/>
       <label for="javascript">javascript</label>
     </div>
-
-    <div>
+    -->
+    <!-- <div>
       <label for=""> Years of Experience</label>
       <input 
         type="radio"
@@ -142,30 +142,30 @@
         value="0-2"
         v-model="formValues.yearsOfExperience"
       />
-      <label for="">0-2</label>
+      <label for="0-2">0-2</label>
       <input 
         type="radio"
         id="3-4"
         value="3-4"
         v-model="formValues.yearsOfExperience"
       />
-      <label for="">3-4</label>
+      <label for="3-4">3-4</label>
       <input 
         type="radio"
         id="6-10"
         value="6-10"
         v-model="formValues.yearsOfExperience"
       />
-      <label for="">6-10</label>
+      <label for="6-10">6-10</label>
       <input 
         type="radio"
         id="10+"
         value="10+"
         v-model="formValues.yearsOfExperience"
       />
-      <label for="">10+</label>
-    </div>
-
+      <label for="10+">10+</label>
+    </div> -->
+    <!--
     <div>
       <label for="age">Age</label>
       <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age" />
@@ -187,7 +187,16 @@
   <h2>Total - {{ items.reduce((total, curr) => (total = total + curr.price), 0) }} </h2>
   <button @click="items.push({id: 4, title: 'Keyboard', price: 50})">Add item</button>
   <h2>Computed Total - {{ total }}</h2>
+  <h2>Method Total - {{ getTotal() }}</h2>
+  <input type="text" v-model="country" style="margin: 0 auto;">
+  
+  <template v-for="item in items" :key="item.id">
+    <h2 v-if="item.price > 100">{{item.title}}  {{item.price}}</h2>
+  </template>
 
+  <h2 v-for="item in expensiveItems" :key="item.id">
+    {{ item.title }} {{ item.price }}
+  </h2>
 </template>
 
 <script>
@@ -256,16 +265,16 @@ export default {
       // baseValue: 2
       // name: "Vishwas",
       // count: 0,
-      // formValues: {
-      //   name: '',
-      //   profileSummary: '',
-      //   country: '',
-      //   jobLocation: [],
-      //   remoteWork: "no",
-      //   skillSet: [],
-      //   yearsOfExperience: "",
-      //   age: null,
-      // },
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '',
+        jobLocation: [],
+        remoteWork: "no",
+        skillSet: [],
+        yearsOfExperience: "",
+        age: null,
+      },
       name: "Vishwas",
       firstName: 'Bruce',
       lastName: 'Wayne',
@@ -286,6 +295,7 @@ export default {
           price: 300,
         },
       ],
+      country: '',
     }
   },
   methods: {
@@ -310,6 +320,10 @@ export default {
     submitForm() {
       console.log('Form values', this,this.formValues)
     },
+    getTotal() {
+      console.log("getTotal Methyod")
+      return this.items.reduce((total, curr) => (total = total + curr.price), 0) 
+    }
   },
   computed: {
     fullName() {
@@ -318,7 +332,10 @@ export default {
     },
     total() {
       return this.items.reduce((total, curr) => (total = total + curr.price), 0) 
-    }
+    },
+    expensiveItems() {
+      return this.items.filter( item => item.price > 100)
+    },
   }
 }
 </script>
