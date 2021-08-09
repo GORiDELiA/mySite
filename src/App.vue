@@ -6,7 +6,7 @@
   <div v-html="channel"></div>
   <div v-html="hack"></div>
 
-  <h2 :id="heaingID">Heading</h2>
+  <h2 :id="headingID">Heading</h2>
   <button :disabled="isDisabled">Bind</button><br>
   <h2 class="underline">Underlined Text</h2>
 
@@ -78,15 +78,15 @@
     <button @click="decrement(1)">Decrement 1</button>
     <button @click="decrement(5)">Decrement 5</button>
   </div> -->
-  <div>
+  <!-- <div>
     <pre>
       {{ JSON.stringify(formValues, null ,2) }}
     </pre>
   </div>
-  <form @submit="submitForm">
+  <form @submit.prevent="submitForm">
     <div>
       <label for="name">Name</label>
-      <input type="text" id="name" v-model="formValues.name">
+      <input type="text" id="name" v-model.trim.lazy="formValues.name" />
     </div>
 
     <div>
@@ -167,11 +167,23 @@
     </div>
 
     <div>
+      <label for="age">Age</label>
+      <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age" />
+    </div> -->
+
+    <!-- <div>
       <button type="submit">Submit</button>
-    </div>
-  </form>
+    </div> -->
+  <!-- </form> -->
 
+  <!-- v-once：レンダーを１回のみ行う -->
+  <h2 v-once>{{name}}</h2>
+  <button @click="name='Batman'">Change name</button>
+  <!-- v-pre：コンパイルをスキップ -->
+  <h2 v-pre>{{name}}</h2>
 
+  <h2>Fullname - {{ firstName}} {{lastName}} </h2>
+  <h2>Fullname - {{ fullName }} </h2>
 </template>
 
 <script>
@@ -238,17 +250,21 @@ export default {
       // },
       // baseMultiply: 5,
       // baseValue: 2
-      name: "Vishwas",
-      count: 0,
-      formValues: {
-        name: '',
-        profileSummary: '',
-        country: '',
-        jobLocation: [],
-        remoteWork: "no",
-        skillSet: [],
-        yearsOfExperience: "",
-      },
+      // name: "Vishwas",
+      // count: 0,
+      // formValues: {
+      //   name: '',
+      //   profileSummary: '',
+      //   country: '',
+      //   jobLocation: [],
+      //   remoteWork: "no",
+      //   skillSet: [],
+      //   yearsOfExperience: "",
+      //   age: null,
+      // },
+      // name: "Vishwas",
+      firstName: 'Bruce',
+      lastName: 'Wayne',
     }
   },
   methods: {
@@ -270,10 +286,14 @@ export default {
     //   this.name = "Batman"
     //   console.log("Event", event)
     // },
-    submitForm(event) {
-      event.preventDefault()
+    submitForm() {
       console.log('Form values', this,this.formValues)
-    }
+    },
+  },
+  computed: {
+    fullName() {
+      return `${this.firstName} ${this.lastName}`
+    },
   }
 }
 </script>
