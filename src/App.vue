@@ -1,78 +1,68 @@
 <template>
-  
-  <div> {{ greet }} </div>
-
+  <div id="app">
+    <header id="header_a">
+      <header-component></header-component>
+    </header>
+      <!--リンクタグを生成します。-->
+      <router-link to="/">top</router-link>
+      <router-link to="/page2">about</router-link>
+      <router-link to="/page3">contact</router-link>
+    <!--上記のリンクタグで設定したコンポーネントが表示される場所です。-->
+    <router-view></router-view>
+    <footer id="footer_a">
+      <footer-component></footer-component>
+    </footer>
+  </div>
 </template>
 
+<!--コンポーネントの名前を定義します。-->
 <script>
+import HeaderComponent from './components/HeaderComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 export default {
-  name: 'App',
-  data() {
-    return {
-      // greet: "Hello",
-    }
+  components: { HeaderComponent,
+                FooterComponent,
   },
-  computed: {
-    // fullName() {
-    //   // return `${this.firstName} ${this.lastName}`
-    //   return this.firstName + " "+this.lastName
-    // },
-  },
-  watch: {
-    // volume(newValue, oldValue) {
-    // },
-  },
+  name: 'App'
 }
 </script>
 
+<!--スタイルの指定をします-->
 <style>
+body {
+  margin: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
-.underline {
-  text-decoration: underline;
-}
-
-.promoted {
-  font-style: italic;
-}
-
-.new {
-  color: olivedrab;
-}
-
-.sold-out {
-  color: red;
-}
-
-label {
-  font-weight: bold;
+#header {
+  height: 40px;
+  background: white;
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
   display: flex;
-  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
 }
-input + label {
-  font-weight: bold;
-  display: inline-flex;
-  margin-right: 20px;
+
+#header_a {
+  text-decoration: none;
+  color: #2c3e50;
+  /* margin: 0 10px; */
+  padding: 3px 10px;
+  background: #5ccebf;
 }
-input[type='text'],
-textarea,
-select {
-  display: block;
-  width: 400px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+
+#footer_a {
+  text-decoration: none;
+  color: #2c3e50;
+  /* margin: 0 10px; */
+  padding: 3px 10px;
+  background: #5ccebf;
 }
 </style>
