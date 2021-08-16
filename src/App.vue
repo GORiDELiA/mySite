@@ -348,7 +348,7 @@ export default {
   },
   watch: {
     volume(newValue, oldValue) {
-      if(newValue > oldValue && newValue === 16) {
+      if((newValue > oldValue) && (newValue === 16)) {
         alert('Listening to a high volume for a long time may damage your hearing')
       }
     },
