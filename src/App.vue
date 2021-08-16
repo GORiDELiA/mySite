@@ -1,7 +1,7 @@
 <template>
   
   <!-- <div> {{ greet }} {{ name }} </div>
-  <div> {{ channel }} </div>
+  <div> {{ channela }} </div>
   
   <div v-html="channel"></div>
   <div v-html="hack"></div>
