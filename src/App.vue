@@ -25,9 +25,6 @@ export default {
 
 <!--スタイルの指定をします-->
 <style scoped>
-body {
-  margin: 0;
-}
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -35,6 +32,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 960px;
+  margin:auto;
 }
 
 </style>
