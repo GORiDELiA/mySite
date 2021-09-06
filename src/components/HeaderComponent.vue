@@ -27,23 +27,24 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
-  width: 100%;
-  background: #5ccebf;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
-}
+  height: 60px;
+  /* width: 100%; */
+  /* background: white; */
+  /* box-shadow: 0px 3px 3px 5px rgba(0, 0, 0, 0.1); */
+  /* background-clip: padding-box; */
+  border-bottom: solid 2px rgba(0,0,0,.1);
+  }
 
 .title {
   margin-left: 20px;
-  font-size: 25px;
-  background: black;
+  /* font-size: 25px; */
 }
 .menu {
   display: flex;
   list-style: none;
 }
 .menu-item {
-  margin-right: 20px;
+  margin-right: 25px;
 }
 .menu a {
   text-decoration: none;
