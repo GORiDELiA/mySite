@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="title">Title</h1>
     <ul class="menu">
-      <li class="menu-item"><router-link to="/top">     Top      </router-link></li>
+      <li class="menu-item"><router-link to="/">     Home      </router-link></li>
       <li class="menu-item"><router-link to="/about">   About    </router-link></li>
       <li class="menu-item"><router-link to="/catalog"> Catalog  </router-link></li>
       <li class="menu-item"><router-link to="/singin">  Sing in  </router-link></li>
@@ -28,16 +28,11 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  /* width: 100%; */
-  /* background: white; */
-  /* box-shadow: 0px 3px 3px 5px rgba(0, 0, 0, 0.1); */
-  /* background-clip: padding-box; */
-  border-bottom: solid 2px rgba(0,0,0,.1);
-  }
+  border-bottom: solid 1px rgba(0,0,0,.1);
+}
 
 .title {
-  margin-left: 20px;
-  /* font-size: 25px; */
+  margin-left: 40px;
 }
 .menu {
   display: flex;

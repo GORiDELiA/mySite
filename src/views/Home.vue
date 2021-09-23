@@ -10,7 +10,7 @@
 
 export default {
   components: {},
-  name: "Top",
+  name: "Home",
   data() {
     return {};
   },

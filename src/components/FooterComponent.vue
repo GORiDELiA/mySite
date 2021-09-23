@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>{{ pageTitle }}</h2>
+    <h1>{{ pageTitle }}</h1>
   </div>
 </template>
 
@@ -16,20 +16,11 @@ export default {
 
 <style scoped>
 .container {
-  height: 40px;
-  background: #5ccebf;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: center;
   align-items: center;
-  clear: both;
+  justify-content: center;
+  height: 60px;
+  border-top: solid 2px rgba(0,0,0,.1);
 }
 
-.footer a {
-  text-decoration: none;
-  color: #2c3e50;
-  /* margin: 0 10px; */
-  padding: 3px 10px;
-  background: #5ccebf;
-}
 </style>
